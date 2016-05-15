@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
   $loggedin = FALSE;
 }
 
-// Default HTML regardless of login or not
+// Default HTML - Logo and Title
 echo "<title>$appname$userstr</title><link rel='stylesheet' " .
 "href='styles.css' type='text/css'>"                          .
 "</head><body><center><canvas id='logo' width='624' "         .
@@ -43,6 +43,6 @@ else
         "<li><a href='signup.php'>Sign up</a></li>"           .
         "<li><a href='login.php'>Log in</a></li>"             .
         "<span class='info'>&#8658; You must be logged in to" .
-        "view this page.</span><br><br>");
+        " view this page.</span><br><br>");
 
 ?>

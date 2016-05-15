@@ -20,6 +20,8 @@
   function queryMysql($query) {
     global $connection;
     $result = $connection->query($query);
+    if (!$result) die($connection->error); //This fixed the error about non-object...what?
+    return $result;
   }
 
   //Figure this out please
