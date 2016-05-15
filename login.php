@@ -11,7 +11,7 @@
 
     if ($user == "" || $pass == "")
       $error = "Not all fields were entered<br>";
-    else {
+    else { //Change queryMySQL to queryMysql to see if it still works. How is this working!?!?
       $result = queryMySQL("SELECT user, pass FROM members WHERE user='$user' AND pass='$pass'");
       //printf($result->num_rows);
       if ($result->num_rows == 0) {
