@@ -66,16 +66,14 @@ _END;
 
   echo <<<_END
     <form method='post' action='signup.php'>$error
-    <span class='fieldname'>Username</span>
-    <input type='text' maxlength='16' name='user' value='$user' onBlur='checkUser(this)'><span id='info'></span><br>
-    <span class='fieldname'>Password</span>
-    <input type='password' maxlength='16' name='pass' value='$pass'><br>
+    <input class='fieldname' placeholder='Username' type='text' maxlength='16' name='user' value='$user' onBlur='checkUser(this)'><span id='info'></span><br>
+    <input class='fieldname' placeholder='Password' type='password' maxlength='16' name='pass' value='$pass'><br>
 _END;
 
  ?>
 
     <span class='fieldname'>&nbsp;</span>
-    <input type='submit' value='Sign up'>
+    <input class='submit' type='submit' value='Sign up'>
     </form></div><br>
   </body>
 </html>

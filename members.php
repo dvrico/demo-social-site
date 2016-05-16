@@ -40,7 +40,7 @@ for ($j = 0 ; $j < $num ; ++$j) {
   $row = $result->fetch_array(MYSQLI_ASSOC);
   if ($row['user'] == $user) continue;
 
-  echo "<li><a href='members.php?view=" .
+  echo "<li class='member'><a href='members.php?view=" .
     $row['user'] . "'>" . $row['user'] . "</a>";
   $follow = "follow";
 

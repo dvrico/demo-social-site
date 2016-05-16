@@ -28,15 +28,15 @@
 
   echo <<<_END
     <form method='post' action='login.php'>$error
-    <span class='fieldname'>Username</span><input type='text' maxlength='16' name='user' value='$user'><br>
-    <span class='fieldname'>Password</span><input type='password' maxlength='16' name='pass' value='$pass'><br>
+    <input class='fieldname' placeholder='Username' type='text' maxlength='16' name='user' value='$user'><br>
+    <input class='fieldname' placeholder='Password' type='password' maxlength='16' name='pass' value='$pass'><br>
 _END;
 
 ?>
 
     <br>
     <span class="fieldname">&nbsp;</span>
-    <input type='submit' value='Login'>
+    <input class="submit" type='submit' value='Login'>
     </form><br></div>
   </body>
 </html>

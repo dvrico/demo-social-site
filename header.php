@@ -21,12 +21,13 @@ if (isset($_SESSION['user'])) {
 }
 
 // Default HTML - Logo and Title
-echo "<title>$appname$userstr</title><link rel='stylesheet' " .
-"href='styles.css' type='text/css'>"                          .
-"</head><body><center><canvas id='logo' width='624' "         .
-"height='96'>$appname</canvas></center>"                      .
-"<div class='appname'>$appname$userstr</div>"                 .
-"<script src='javascript.js'></script>";
+echo "<title>$appname$userstr</title>"                        .
+"<link rel='stylesheet' href='./styles/styles.css' type='text/css'>"   .
+"<link href='https://fonts.googleapis.com/css?family=Lobster+Two:700italic|Open+Sans:400,700' rel='stylesheet'" .
+"type='text/css'></head>"                                     .
+"<body><h1 class='logo'>$appname</h1>"                        .
+"<div class='user'>$userstr</div>"                 .
+"<script src='./js/javascript.js'></script>";
 
 //If logged in, give full access to site, else show limited options
 if ($loggedin)
