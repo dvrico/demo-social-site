@@ -19,7 +19,7 @@ else {
 
 echo "<div class='main'>";
 
-//showProfile($view);
+// Retrieve relationship info for user and store them in two different arrays
 
 $followers = array();
 $following = array();
@@ -40,10 +40,15 @@ for ($j = 0; $j < $num ; ++$j) {
   $following[$j] = $row['user'];
 }
 
+// Intersect arrays to find mutual friends and further split them to find
+// followers and following
+
 $mutual = array_intersect($followers, $following);
 $followers = array_diff($followers, $mutual);
 $following = array_diff($following, $mutual);
 $friends = FALSE;
+
+// Display information if array contains elements
 
 if (sizeof($mutual)) {
   echo "<span class='subhead'>$name2 mutual friends</span><ul>";
@@ -71,6 +76,7 @@ if (sizeof($following)) {
 
 if (!$friends) echo "<br> You don't have any friends yet.<br><br>";
 
+// Option to view messages
 echo "<a class='button' href='messages.php?view=$view'>" .
      "View $name2 messages</a>";
 

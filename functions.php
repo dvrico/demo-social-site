@@ -10,7 +10,7 @@
   $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
   if ($connection->connect_error) die($connection->connect_error);
 
-// Functions ----------------------------------------------------------------*/
+// Necessary functions for whole site----------------------------------------*/
 
   function createTable($name, $query) {
     queryMysql("CREATE TABLE IF NOT EXISTS $name($query)");
@@ -20,11 +20,10 @@
   function queryMysql($query) {
     global $connection;
     $result = $connection->query($query);
-    if (!$result) die($connection->error); //This fixed the error about non-object...what?
+    if (!$result) die($connection->error);
     return $result;
   }
 
-  //Figure this out please
   function destroySession() {
     $_SESSION=array();
 
@@ -39,11 +38,9 @@
     $var = strip_tags($var);
     $var = htmlentities($var);
     $var = stripslashes($var);
-    //What is the db doing to this?
     return $connection->real_escape_string($var);
   }
 
-  // Hrrrm....
   function showProfile($user) {
     if (file_exists("$user.jpg"))
       echo "<img src='$user.jpg' style = 'float:left;'>";

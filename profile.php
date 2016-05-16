@@ -8,7 +8,8 @@
 
   $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
 
-// Take text and replace previous about me text, if applicable
+// Take post data and replace previous text in about me section, if applicable
+
   if (isset($_POST['text'])) {
     $text = sanitizeString($_POST['text']);
     $text = preg_replace('/\s\s+/', ' ', $text);
@@ -27,9 +28,11 @@
 
   $text = stripslashes(preg_replace('/\s\s+/', ' ', $text));
 
+// Take file data from form and assign to the specific user in db
+
   if (isset($_FILES['image']['name'])) {
     $saveto = "$user.jpg";
-    move_uploaded_file($_FILES['image']['tmp_name'], $saveto);  // Image uploading not working, permission being denied..
+    move_uploaded_file($_FILES['image']['tmp_name'], $saveto);
     $typeok = TRUE;
 
     switch($_FILES['image']['type']) {
@@ -39,6 +42,8 @@
       case "image/png":   $src = imagecreatefrompng($saveto); break;
       default:            $typeok = FALSE; break;
     }
+
+// Edit the image to fit required specifications for profile pic
 
     if ($typeok) {
       list($w, $h) = getimagesize($saveto);
@@ -68,7 +73,9 @@
     }
   }
 
-  showProfile($user);
+  showProfile($user); // Finally, show user's profile (this is from functions.php)
+
+// Multipart form-----------------------*/
 
   echo <<<_END
     <form method='post' action='profile.php' enctype='multipart/form-data'>

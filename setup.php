@@ -7,7 +7,9 @@
     <h3>Setting up...</h3>
 
 <?php
-// MySql Table set up--------------------------------------------------------*/
+// Need to run this first before running app for the first time
+// Sets up tables in db
+ 
       require_once 'functions.php';
 
       createTable('members',

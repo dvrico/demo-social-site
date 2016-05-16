@@ -113,12 +113,14 @@ ul .friend {
   color: red;
   position: absolute;
   margin: 10px;
+  font-weight: 300;
 }
 
 .available {
   color: green;
   position: absolute;
   margin: 10px;
+  font-weight: 300;
 }
 
 .whisper {

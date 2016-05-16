@@ -6,7 +6,8 @@ session_start();
 
 echo "<!DOCTYPE html>\n<html><head>";
 
-require_once 'functions.php';
+// Other modules primarily access this through header.php
+require_once 'functions.php'; 
 
 $userstr = ' (Guest)';
 

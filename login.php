@@ -5,15 +5,16 @@
   echo "<div class='main'><h3>Please enter your details to log in</h3>";
   $error = $user = $pass = "";
 
+// Takes form data, checks it against db, and sets session for user or throws an error.
+
   if (isset($_POST['user'])) {
     $user = sanitizeString($_POST['user']);
     $pass = sanitizeString($_POST['pass']);
 
     if ($user == "" || $pass == "")
       $error = "Not all fields were entered<br>";
-    else { //Change queryMySQL to queryMysql to see if it still works. How is this working!?!?
+    else {
       $result = queryMySQL("SELECT user, pass FROM members WHERE user='$user' AND pass='$pass'");
-      //printf($result->num_rows);
       if ($result->num_rows == 0) {
         $error = "<span class=error>Username/Password invalid</span><br><br>";
       }
@@ -26,6 +27,8 @@
     }
   }
 
+// Login form ------------------------------------------------------------*/
+
   echo <<<_END
     <form method='post' action='login.php'>$error
     <input class='fieldname' placeholder='Username' type='text' maxlength='16' name='user' value='$user'><br>
@@ -35,7 +38,6 @@ _END;
 ?>
 
     <br>
-    <span class="fieldname">&nbsp;</span>
     <input class="submit" type='submit' value='Login'>
     </form><br></div>
   </body>

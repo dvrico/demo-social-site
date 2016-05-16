@@ -4,8 +4,12 @@ require_once 'header.php';
 
 if (!$loggedin) die();
 
+// Set $view to either user or another member
+
 if (isset($_GET['view'])) $view = sanitizeString($_GET['view']);
 else                      $view = $user;
+
+// Take post data and options and store it in db
 
 if (isset($_POST['text'])) {
   $text = sanitizeString($_POST['text']);
@@ -17,12 +21,16 @@ if (isset($_POST['text'])) {
   }
 }
 
+// Set up proper grammer depending on user's or member's messages
+
 if ($view != "") {
   if ($view == $user) $name1 = $name2 = "Your";
   else {
     $name1 = "<a href='members.php?view=$view'>$view</a>'s";
     $name2 = "$view's";
   }
+
+// Display profile and form
 
   echo "<div class='main'><h3>$name1 Messages</h3>";
   showProfile($view);
@@ -36,6 +44,8 @@ if ($view != "") {
     <input type='submit' value='Post Message'></form><br>
 _END;
 
+// Option to erase your own public message
+
   if (isset($_GET['erase'])) {
     $erase = sanitizeString($_GET['erase']);
     queryMysql("DELETE FROM messages WHERE id=$erase AND recip='$user'");
@@ -44,6 +54,8 @@ _END;
   $query = "SELECT * FROM messages WHERE recip='$view' ORDER BY time DESC";
   $result = queryMysql($query);
   $num = $result->num_rows;
+
+// Retrieve messages from db and display them
 
   for ($j = 0 ; $j < $num ; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);

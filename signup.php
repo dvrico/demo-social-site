@@ -4,6 +4,7 @@
 
   echo <<<_END
     <script>
+    // Ajax request for username availability
       function checkUser(user) {
         if (user.value == '') {
           O('info').innerHTML = '';
@@ -14,8 +15,6 @@
         request = new ajaxRequest()
         request.open("POST", "checkuser.php", true)
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-        //request.setRequestHeader("Content-length", params.length)
-        //request.setRequestHeader("Connection", "close")
 
         request.onreadystatechange = function() {
           if (this.readyState == 4)
@@ -43,6 +42,7 @@
     <div class='main'><h3>Please enter your details to sign up</h3>
 _END;
 
+// Check username against db, if available let the user sign up
   $error = $user = $pass = "";
   if (isset($_SESSION['user'])) destroySession();
 
